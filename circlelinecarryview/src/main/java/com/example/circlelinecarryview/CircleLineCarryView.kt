@@ -181,4 +181,27 @@ class CircleLineCarryView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : CircleLineCarryView) {
+
+        private val animator : Animator = Animator(view)
+        private val clc : CircleLineCarry = CircleLineCarry(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            clc.draw(canvas, paint)
+            animator.animate {
+                clc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            clc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
