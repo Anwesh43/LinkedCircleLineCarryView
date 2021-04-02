@@ -206,4 +206,12 @@ class CircleLineCarryView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : CircleLineCarryView {
+            val view : CircleLineCarryView = CircleLineCarryView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
