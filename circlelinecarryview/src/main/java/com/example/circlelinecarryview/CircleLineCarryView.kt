@@ -37,11 +37,12 @@ fun Canvas.drawCircleLineCarry(scale : Float, w : Float, h : Float, paint : Pain
     val sf2 : Float = sf.divideScale(1, parts)
     val sf3 : Float = sf.divideScale(2, parts)
     val x : Float = -w / 2 + (w /2 - size) * sf2
-    val y : Float = (-h / 2 + size) * sf2
+    val y : Float = (-h / 2 + size) * sf3
+    val cx : Float = x + size
     save()
     translate(w / 2, h / 2)
     drawLine(-w / 2, 0f, x - (w / 2 - size) * sf3, 0f, paint)
-    drawArc(RectF(x - size, y - size, x + size, y + size), 0f, 360f * sf1, true, paint)
+    drawArc(RectF(cx - size, y - size, cx + size, y + size), 0f, 360f * sf1, true, paint)
     drawLine(0f, -h / 2, 0f, -h / 2 + (h / 2 - size) * sf2 + y, paint)
     restore()
 }
